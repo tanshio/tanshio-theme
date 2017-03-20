@@ -79,7 +79,7 @@ li {
   margin-right: .5em;
   border-radius: 3px;
   line-height: 0;
-  padding: 1em 1em;
+  /*padding: 1em 1em;*/
   /*background: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%);*/
   border: 1px solid #b8747d;
   /*background-color: rgb(179, 86, 98);*/
@@ -87,6 +87,12 @@ li {
   /*color: #b8747d;*/
 
   color: #fff;
+  a {
+    padding: 1em 1em;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+  }
 
 }
 

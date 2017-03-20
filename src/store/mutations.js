@@ -1,8 +1,5 @@
-import Vue from 'vue'
 import { set } from 'vue'
 import * as types from './mutation-types'
-
-import API from '../settings/API.js'
 
 
 export default {
@@ -20,7 +17,11 @@ export default {
      set(state, 'post', post)
   },
   [types.RECEIVE_LATEST_POSTS](state,list) {
-     set(state, 'list', list)
+    set(state.list, 'index', list)
+    set(state.list, 'current', state.list.index)
+    list.forEach((item)=>{
+      state.tmp[item.slug] = item
+    })
   },
   [types.RECEIVE_SEARCH_POSTS](state,list) {
      set(state, 'list', list)

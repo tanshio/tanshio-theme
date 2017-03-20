@@ -1,4 +1,4 @@
-let DOMAIN = 'http://tanshio.dev'
+let DOMAIN = 'http://tanshio.net'
 
 if (process.env.NODE_ENV === 'production') {
   DOMAIN = ''

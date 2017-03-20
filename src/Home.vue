@@ -15,7 +15,11 @@ export default {
       if(route.query.s) {
         vm.$store.dispatch('recieveSearchPosts',route.query.s)
       }else {
-        vm.$store.dispatch('recieveLatestPosts')
+        if(vm.$store.state.list.index.length>0){
+          vm.$store.state.list.current = vm.$store.state.list.index
+        }else{
+          vm.$store.dispatch('recieveLatestPosts')
+        }
       }
     })
   },
@@ -35,8 +39,3 @@ export default {
 }
 </script>
 
-<style>
-body {
-  font-family: Helvetica, sans-serif;
-}
-</style>

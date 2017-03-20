@@ -1,9 +1,5 @@
 <template>
-  <transition name="fade">
-    <div>
-      <h1>categories</h1>
-    </div>
-  </transition>
+  <article-content></article-content>
 </template>
 
 <script>
@@ -16,12 +12,6 @@ export default {
 
   },
   beforeRouteEnter (route, redirect, next) {
-
-    // const params = {
-    //   "category_name":
-    // }
-
-
     next(vm => {
       vm.fetchData(route.params.slug)
     })
@@ -34,7 +24,6 @@ export default {
       // ルートが変更されたらこのメソッドを再び呼び出します
       '$route' (to, from) {
         console.log(to)
-        console.log("qqq")
 
         const params = {
           filter: {
@@ -42,21 +31,18 @@ export default {
           }
 
         }
-        // this.fetchData(params)
+         this.fetchData(params)
     }
   },
   methods: {
     fetchData:function(params) {
-
-
-      console.log(params)
-      console.log(this.$store.state.categories)
-
+      const slug = this.$route.params.slug
       this.$http.get(
-        `${API.POSTS_CATEGORY}${this.$route.params.slug}?_embed`
+        `${API.POSTS_CATEGORY}${slug}?_embed`
       ).then((response) => {
         console.log(response)
-        this.$store.state.list = response['body']
+        this.$store.state.list.categories[slug] = response['body']
+        this.$store.state.list.current =  this.$store.state.list.categories[slug]
       })
     }
   }
@@ -64,8 +50,3 @@ export default {
 }
 </script>
 
-<style>
-body {
-  font-family: Helvetica, sans-serif;
-}
-</style>

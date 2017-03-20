@@ -2,23 +2,23 @@
   <div class="c-article">
 
     <item v-for='list in lists' :key='list.id' >
-      <div class="" v-on:click.capture="test(list,$event)">
+      <div class="" v-on:click.capture="setPost(list,$event)">
         <transition name="fade">
-          <router-link :to="{ name: 'post', params: { slug: list.slug }}" @click="test(list)">
+          <router-link :to="{ name: 'post', params: { slug: list.slug }}" @click="setPost(list)">
             <div class="list-inner__bg">
               <span>
-                <svg version="1.1"
-                	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                	 x="0px" y="0px" width="55px" height="54.7px" viewBox="0 0 55 54.7" style="enable-background:new 0 0 55 54.7;"
-                	 xml:space="preserve">
-                <defs>
-                </defs>
-                <path d="M19.5,53.9c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0.1,0.1,0.1,0.1,0.1c0.1,0,0.2,0,0.3,0.1c0.1,0.1,0.2,0.1,0.2,0.1
-                	c0.3,0.1,0.5,0.2,0.6,0.3c0.2,0,0.4,0,0.6,0c0.3,0.1,0.6,0.1,0.8,0c0.1,0,0.2,0,0.3,0c0.4-0.1,0.8-0.3,1.1-0.5c0,0,0.1-0.1,0.2-0.2
-                	c0.3-0.2,0.5-0.3,0.5-0.4c0.1-0.1,0.1-0.1,0.2-0.2c0.1-0.1,0.1-0.2,0.1-0.2L54.5,5.4c0.5-0.8,0.7-1.7,0.5-2.7s-0.7-1.7-1.5-2.2
-                	c-0.8-0.5-1.6-0.7-2.6-0.5s-1.7,0.7-2.2,1.4L21,45.7L5.9,30.9c-0.7-0.6-1.6-0.9-2.5-0.9S1.6,30.3,0.9,31S0,32.6,0,33.6
-                	c0.1,1,0.4,1.8,1.2,2.4L19.5,53.9C19.5,53.8,19.5,53.9,19.5,53.9z"/>
-                </svg>
+                <!--<svg version="1.1"-->
+                	 <!--xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"-->
+                	 <!--x="0px" y="0px" width="55px" height="54.7px" viewBox="0 0 55 54.7" style="enable-background:new 0 0 55 54.7;"-->
+                	 <!--xml:space="preserve">-->
+                <!--<defs>-->
+                <!--</defs>-->
+                <!--<path d="M19.5,53.9c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0.1,0.1,0.1,0.1,0.1c0.1,0,0.2,0,0.3,0.1c0.1,0.1,0.2,0.1,0.2,0.1-->
+                	<!--c0.3,0.1,0.5,0.2,0.6,0.3c0.2,0,0.4,0,0.6,0c0.3,0.1,0.6,0.1,0.8,0c0.1,0,0.2,0,0.3,0c0.4-0.1,0.8-0.3,1.1-0.5c0,0,0.1-0.1,0.2-0.2-->
+                	<!--c0.3-0.2,0.5-0.3,0.5-0.4c0.1-0.1,0.1-0.1,0.2-0.2c0.1-0.1,0.1-0.2,0.1-0.2L54.5,5.4c0.5-0.8,0.7-1.7,0.5-2.7s-0.7-1.7-1.5-2.2-->
+                	<!--c-0.8-0.5-1.6-0.7-2.6-0.5s-1.7,0.7-2.2,1.4L21,45.7L5.9,30.9c-0.7-0.6-1.6-0.9-2.5-0.9S1.6,30.3,0.9,31S0,32.6,0,33.6-->
+                	<!--c0.1,1,0.4,1.8,1.2,2.4L19.5,53.9C19.5,53.8,19.5,53.9,19.5,53.9z"/>-->
+                <!--</svg>-->
               </span>
             </div>
             <div class="list-inner">
@@ -41,35 +41,29 @@
 
 <script>
 
-import TweenMax from 'gsap'
-import CubicBezier from '../../settings/CubicBezier.js'
+import {isSM,isMid} from '../../settings/utils'
 
 export default {
   props: ['lists'],
-  data () {
-    return {
 
-    }
-  },
   methods: {
-    test(index,event) {
-      console.log(event)
-      console.log(index.title.rendered);
+    setPost(index,event) {
+
       this.$store.state.tmp[index.slug] = index
       this.$store.state.post = index
 
-      document.body.scrollTop = 0
+      if(isMid()){
+        if(document.querySelector('.view')){
+          document.querySelector('.view').scrollTop = 0
+        }
+      }else if(isSM()){
+        document.body.scrollTop = 0
+      }else {
+        if(document.querySelector('.content')){
+          document.querySelector('.content').scrollTop = 0
+        }
 
-      // var timeline = new TimelineMax();
-      //
-      // timeline.to('.logo', .6, {
-      //   opacity: .2,
-      //   delay  : .5,
-      // 	ease: CubicBezier.config(0.72, 0, 0.41, 0.9),
-      // 	onComplete: function(){
-      //       console.log('end-right')
-      //   }
-      // });
+      }
     }
   }
 }
@@ -146,17 +140,15 @@ time {
 .item {
   display: block;
   border:1px solid #fff;
-  width: 49%;
+  width: 100%;
   /*height: 400px;*/
-  padding-bottom: 49%;
+  padding-bottom: 75%;
   color: #fff;
   position: relative;
   margin-bottom: 1rem;
   @media screen and (min-width: 320px) and (max-width: 640px) {
-
     width: 100%;
-    padding-bottom: 100%;
-    /*margin-bottom: 0;*/
+    padding-bottom: 75%;
   }
   @media screen and (min-width: 780px) {
     width: 100%;
@@ -200,22 +192,6 @@ time {
 }
 
 
-/*.item a:visited {
-  color: #fff
-}*/
-
-
-
-/*.item a:visited .list-inner {
-  color: #ae8388;
-}
-
-.item a:visited .list-inner__bg {
-  background: currentColor;
-}*/
-
-
-
 .item a.router-link-active {
   color: #ae8388;
   box-shadow: 2px 2px 10px 0 rgb(171, 127, 132);
@@ -237,9 +213,5 @@ time {
   }
 
 }
-
-
-
-
 
 </style>

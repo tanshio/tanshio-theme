@@ -10,18 +10,16 @@ Vue.use(Vuex)
 const state = {
   mode: null,
   keyword: "",
-  list: [],
+  list: {
+    current: [],
+    index: [],
+    categories: {},
+    tags: {},
+  },
   categories: [],
   tags: [],
-  post:{
-
-  },
-  tmp: {
-    index:[],
-    search:[],
-    category:[],
-    tag:[]
-  }
+  post:{},
+  tmp: {}
 }
 
 export default new Vuex.Store({

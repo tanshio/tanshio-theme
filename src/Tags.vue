@@ -1,79 +1,50 @@
 <template>
-  <transition name="fade">
-    <div>
-      <h1>categories</h1>
-    </div>
-  </transition>
+  <article-content></article-content>
 </template>
 
 <script>
 
-import Button from './components/modules/Button.vue'
+  import Button from './components/modules/Button.vue'
+  import API from './settings/API.js'
 
-export default {
-  computed: {
-    post () {
-      // return this.$store.state.post
-    }
-  },
-  methods: {
-    test() {
-      console.log("cat")
-    }
-  },
-  // components: {
-  //   'btn': Button
-  // },
-  // data () {
-  //   return {
-  //
-  //   }
-  // },
+  export default {
+    computed: {
 
-  beforeRouteEnter (route, redirect, next) {
-
-    const params = {
-      filter: {
-        "tag": route.params.slug
-      }
-
-    }
-
-    next(vm => {
-      vm.$http.get(
-        "http://tanshio.net/wp-json/wp/v2/posts?_embed",
-        {
-          params:params
-        }
-      ).then((response) => {
-        console.log(response)
-        vm.$store.state.list = response['body']
-        // console.log(vm.$store.state.list)
-
-        next()
-        // th
+    },
+    beforeRouteEnter (route, redirect, next) {
+      next(vm => {
+        vm.fetchData(route.params.slug)
       })
 
+    },
+    beforeRouteLeave (route, redirect, next) {
+      next()
+    },
+    watch : {
+      // ルートが変更されたらこのメソッドを再び呼び出します
+      '$route' (to, from) {
+        console.log(to)
 
-    })
+        const params = {
+          filter: {
+            "tag": to.params.slug
+          }
 
-    console.log("vefore2")
-  // called before the route that renders this component is confirmed.
-  // does NOT have access to `this` component instance,
-  // because it has not been created yet when this guard is called!
-  },
-  beforeRouteLeave (route, redirect, next) {
-    console.log("home")
-    next()
-  // called when the route that renders this component is about to
-  // be navigated away from.
-  // has access to `this` component instance.
+        }
+         this.fetchData(params)
+      }
+    },
+    methods: {
+      fetchData:function(params) {
+        const slug = this.$route.params.slug
+        this.$http.get(
+          `${API.POSTS_TAG}${slug}?_embed`
+        ).then((response) => {
+          this.$store.state.list.tags[slug] = response['body']
+          this.$store.state.list.current =  this.$store.state.list.tags[slug]
+        })
+      }
+    }
+
   }
-}
 </script>
-
-<style>
-body {
-  font-family: Helvetica, sans-serif;
-}
-</style>
