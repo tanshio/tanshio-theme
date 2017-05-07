@@ -1,0 +1,5 @@
+:root {
+  --g-color: #adb0d2;
+  @custom-media --v-md (min-width: 780px);
+}
+

@@ -81,6 +81,7 @@ export const recieveSearchPosts = ({ state, commit},query) => {
     }
   ).then((response) => {
     console.log('recieveSearchPosts-end')
+    console.log(response['body'])
     commit(types.RECEIVE_SEARCH_POSTS,response['body'])
   })
 }
@@ -105,7 +106,7 @@ export const recievePost = ({ state, commit},slug) => {
 
 export const init = async ({ state, dispatch, commit },route) => {
 
-  if(!state.list.length>0) {
+  if(!state.list.current.length>0) {
     // await initTaxonomies(state)
     dispatch('recieveLatestPosts')
   }

@@ -9,16 +9,25 @@ Vue.use(Vuex)
 
 const state = {
   mode: null,
-  keyword: "",
+  keyword: '',
   list: {
     current: [],
     index: [],
     categories: {},
-    tags: {},
+    tags: {}
+  },
+  count: {
+    index: 1,
+    categories: {
+
+    },
+    tags: {
+
+    }
   },
   categories: [],
   tags: [],
-  post:{},
+  post: {},
   tmp: {}
 }
 

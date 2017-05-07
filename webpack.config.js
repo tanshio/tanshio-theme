@@ -8,9 +8,6 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
-  // resolveLoader: {
-  //   root: path.join(__dirname, 'node_modules')
-  // },
   resolve: {
     modules: [
       path.resolve(__dirname, "src"),
@@ -43,14 +40,6 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.LoaderOptionsPlugin({
-      vue: {
-        // use custom postcss plugins
-        postcss: [require('postcss-nested')(),require('postcss-flexbugs-fixes')(),require("postcss-custom-properties")(),require('postcss-custom-selectors')(),require('postcss-color-function')(),require('postcss-color-rgba-fallback')()]
-      }
-    })
-  ],
   devServer: {
     historyApiFallback: true,
     noInfo: true

@@ -50,6 +50,7 @@ export default {
         console.log(tmp[this.$route.params.slug])
         this.$store.state.post = tmp[this.$route.params.slug]
       }else {
+        console.log('ない')
         this.$store.dispatch('recievePost',this.$route.params.slug)
       }
 
@@ -101,7 +102,11 @@ pre {
   }
 
   img {
-    max-width: 100%
+    max-width: 100%;
+    height: auto;
+  }
+  a {
+    color: var(--g-color);
   }
 }
 

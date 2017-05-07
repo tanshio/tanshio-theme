@@ -6,6 +6,6 @@ export function isSM(){
 
 
 export function isMid(){
-  const width = 1200
+  const width = 1600
   return width -1 > window.innerWidth ? true : false
 }

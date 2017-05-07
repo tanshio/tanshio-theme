@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <article-content v-if="checkSearch"></article-content>
+  <div v-else>
     <span>Home</span>
   </div>
 </template>
@@ -9,12 +10,19 @@
 import Button from './components/modules/Button.vue'
 
 export default {
+  computed: {
+    checkSearch() {
+      return this.$route.query.s && this.$store.state.post.id
+    }
+  },
   beforeRouteEnter (route, redirect, next) {
-
     next(vm=>{
       if(route.query.s) {
+        vm.$store.commit('MODE_CHANGE',`search`)
         vm.$store.dispatch('recieveSearchPosts',route.query.s)
       }else {
+
+        vm.$store.commit('MODE_CHANGE',`index`)
         if(vm.$store.state.list.index.length>0){
           vm.$store.state.list.current = vm.$store.state.list.index
         }else{
@@ -27,14 +35,16 @@ export default {
     next()
   },
   watch : {
-      // ルートが変更されたらこのメソッドを再び呼び出します
+      // 検索用
       '$route' (to, from) {
         if(to.query.s) {
           console.log("query")
+          this.$store.commit('MODE_CHANGE',`search`)
           this.$store.dispatch('recieveSearchPosts',to.query.s)
+        }else {
+          console.log('not query')
         }
     }
-
   },
 }
 </script>

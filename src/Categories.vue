@@ -13,6 +13,7 @@ export default {
   },
   beforeRouteEnter (route, redirect, next) {
     next(vm => {
+      vm.$store.commit('MODE_CHANGE',`category-${route.params.slug}`)
       vm.fetchData(route.params.slug)
     })
 
@@ -23,7 +24,9 @@ export default {
   watch : {
       // ルートが変更されたらこのメソッドを再び呼び出します
       '$route' (to, from) {
-        console.log(to)
+        console.log("category-init")
+
+        this.$store.state.mode = `category-${to.params.slug}`
 
         const params = {
           filter: {

@@ -13,6 +13,7 @@
     },
     beforeRouteEnter (route, redirect, next) {
       next(vm => {
+        vm.$store.commit('MODE_CHANGE',`tax-${route.params.slug}`)
         vm.fetchData(route.params.slug)
       })
 

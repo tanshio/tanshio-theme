@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div tabindex="0" class="l-wrapper">
       <div class="topic">
 
         <div @click="back" class="back">
@@ -10,17 +10,21 @@
         </div>
         <transition name="slide-fade" mode="out-in">
           <h1 v-if="title" key="active">{{title}}</h1>
-          <h1 v-else class="is-loading" key="disable">ないんやで</h1>
+          <h1 v-else class="is-loading" key="disable">ロード中</h1>
         </transition>
-
+        <div v-if="post.date" class="article__ymd">
+          <ymd :time="post.date"></ymd>
+        </div>
 
         <template v-if="post['_embedded']"><cat-list :list="post['_embedded']['wp:term'][0]" type="categories" link="true" class="cat"></cat-list><cat-list :list="post['_embedded']['wp:term'][1]" type="tags" link="true" class="tag"></cat-list></template>
-        <h3>目次 Table of Contents</h3>
-        <ul class="topicList">
-          <li v-for='(topic,index) in topics'>
-            <a @click="move(index,$event)" v-bind:href="'#toc'+index">{{topic}}</a>
-          </li>
-        </ul>
+        <div v-if="topics">
+          <h2>目次</h2>
+          <ul class="topicList">
+            <li v-for='(topic,index) in topics'>
+              <a @click="move(index,$event)" v-bind:href="'#toc'+index">{{topic}}</a>
+            </li>
+          </ul>
+        </div>
 
       </div>
 
@@ -38,16 +42,16 @@ import {isSM,isMid} from '.,/../settings/utils.js'
 export default {
   computed: {
     post () {
-      return this.$store.state.post
+      return this.$store.getters.post
     },
     title() {
-      return this.$store.state.post["title"] ? this.$store.state.post["title"]["rendered"] : ""
+      return this.post["title"] ? this.post["title"]["rendered"] : ""
     },
     content() {
-      return this.$store.state.post["content"] ? this.$store.state.post["content"]["rendered"] : ""
+      return this.post["content"] ? this.post["content"]["rendered"] : ""
     },
     topics() {
-      return this.$store.state.post["toc"] ? this.$store.state.post["toc"] : ""
+      return this.post["toc"] ? this.post["toc"] : ""
     },
   },
   methods: {
@@ -69,50 +73,74 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
-  .slide-fade-enter-active {
-    transition: all .3s ease;
+.l-wrapper {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 14px #ac8085;
   }
-  .slide-fade-leave-active {
-    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  & a {
+    transition: opacity .2s ease-in-out;
+    &:hover {
+      opacity: .7;
+    }
   }
-  .slide-fade-enter, .slide-fade-leave-to
-    /* .slide-fade-leave-active for <2.1.8 */ {
-    /*transform: translateX(10px);*/
-    opacity: 0;
-  }
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active for <2.1.8 */ {
+  /*transform: translateX(10px);*/
+  opacity: 0;
+}
 
 pre {
   white-space: pre-wrap;
 }
 
+.topic {
+  & time {
+    display: block;
+    font-size: .8rem;
+    font-weight: bold;
+    color: #c2b2b3;
+    margin-bottom: 1rem;
+  }
+  & h2 {
+    font-size: 1.2rem;
+  }
+}
+
 .topic h1 {
+  margin-bottom: 0;
   background: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   &.is-loading {
-     position: relative;
-     -webkit-background-clip: border-box;
-     background-image: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%);
-     background-size: 200% 200%;
-   opacity: .7;
-   /*font-size: 1em;*/
-  transform: scaleY(.8);
-      &:before {
-         content:"";
-         display: block;
-         background-color: rgba(255,255,255,.1);
-         position: absolute;
-         width:100%;
-         height:100%;
-         top: 0;
-         left: -100%;
-        /*-webkit-filter: blur(10px);*/
-         animation: bgAnim 2.4s linear infinite;
-
-       }
-
+    position: relative;
+    -webkit-background-clip: border-box;
+    background-image: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%);
+    background-size: 200% 200%;
+    opacity: .7;
+    transform: scaleY(.8);
+    &:before {
+       content:"";
+       display: block;
+       background-color: rgba(255,255,255,.1);
+       position: absolute;
+       width:100%;
+       height:100%;
+       top: 0;
+       left: -100%;
+      /*-webkit-filter: blur(10px);*/
+       animation: bgAnim 2.4s linear infinite;
+     }
    }
 }
 
@@ -128,7 +156,7 @@ pre {
 .view {
   color: #564b4b;
   line-height: 1.8;
-  p {
+  & p {
     text-align: justify;
     &+p {
       margin-top: 1.6rem
@@ -141,20 +169,21 @@ pre {
     }
   }
 
-  h1{
+  & h1{
     line-height: 1.5;
 
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
+  & h1,
+  & h2,
+  & h3,
+  & h4 {
     letter-spacing: -.05em
   }
 
-  img {
-    max-width: 100%
+  & img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -162,6 +191,12 @@ pre {
   display: none;
   @media screen and (min-width: 780px) {
     display: block;
+  }
+  & a {
+    color: #636dd7;
+    &:hover {
+      opacity: .7;
+    }
   }
 }
 
@@ -172,5 +207,12 @@ pre {
   }
 }
 
-
+.content {
+  & a {
+    color: #636dd7;
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
 </style>

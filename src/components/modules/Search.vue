@@ -29,7 +29,7 @@ export default {
       console.log("clickd");
       console.log(this.kw)
       console.log(this.$store.state.keyword)
-      router.push({ path: '/', query: { s: this.$store.state.keyword }})
+      this.$router.push({ path: '/', query: { s: this.$store.state.keyword }})
     }
   }
 }
@@ -41,7 +41,7 @@ export default {
 
   position: relative;
   margin-bottom: 1rem;
-  input {
+  & input {
     border: 1px solid #fff;
     padding: .5rem;
     width: 100%;
@@ -74,7 +74,7 @@ export default {
         color: #e3d4d5;
     }
   }
-  button {
+  & button {
     position: absolute;
     right: 0;
     padding: .5rem;
