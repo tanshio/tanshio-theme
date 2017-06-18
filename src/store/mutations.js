@@ -15,11 +15,12 @@ export default {
     set(state, 'post', post)
   },
   [types.RECEIVE_LATEST_POSTS] (state, list) {
-    set(state.list, 'index', list)
+    set(state.list, 'index', [...state.list.index, ...list])
     set(state.list, 'current', state.list.index)
     list.forEach((item) => {
       state.tmp[item.slug] = item
     })
+    setTimeout(() => { state.scroll = true }, 1000)
   },
   [types.RECEIVE_SEARCH_POSTS] (state, list) {
     set(state.list, 'current', list)

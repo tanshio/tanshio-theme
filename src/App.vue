@@ -86,6 +86,7 @@ body {
   font-family:  "YakuHanJP", apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "source-han-sans-japanese", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
   margin: 0;
   background-color: #fff;
+  -webkit-font-smoothing: antialiased;
 }
 /* ul li{ */
 /*   font-family: "futura-pt",sans-serif */

@@ -98,7 +98,8 @@
 
 </style>
 <script>
-import IntersectionObserver from "intersection-observer"
+import intersectionObserver from 'intersection-observer'
+
 export default {
   computed: {
     lists() {
@@ -119,11 +120,23 @@ export default {
   methods: {
     hover() {
       console.log("hover")
+    },
+    message() {
+      console.log("scroll")
     }
   },
   mounted() {
     console.log("menu-created")
-    console.log(this)
+    console.log(this);
+    const observer = new IntersectionObserver((changes) => {
+      this.$store.dispatch('infinityScroll')
+    }, {
+      root: document.querySelector('.menu'),
+      threshold: [0],
+      rootMargin: '600px',
+    });
+
+    observer.observe(document.querySelector('.m-loading'));
   }
 }
 

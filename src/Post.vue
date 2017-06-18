@@ -9,16 +9,42 @@ import {isSM,isMid} from './settings/utils.js'
 
 export default {
   watch : {
-      '$route': 'fetchData',
+    '$route': 'fetchData',
+    title: function() {
+      this.$emit('updateHead')
+    }
+  },
+  computed: {
+    post () {
+      return this.$store.getters.post
+    },
+    title() {
+      return this.post["title"] ? this.post["title"]["rendered"] : ""
+    },
   },
 
   beforeRouteEnter (route, redirect, next) {
     next(vm => {
       vm.$store.dispatch('init',route)
+      if (!vm.$store.state.mode) {
+        vm.$store.state.mode = 'index'
+      }
     })
   },
   beforeRouteLeave (route, redirect, next) {
     next()
+  },
+
+  head: {
+    // To use "this" in the component, it is necessary to return the object through a function
+    title: function () {
+      return {
+        inner: this.title
+      }
+    },
+    meta: [
+      { name: 'description', content: 'My description', id: 'desc' }
+    ]
   },
 
   methods: {
@@ -49,9 +75,15 @@ export default {
         console.log('ある')
         console.log(tmp[this.$route.params.slug])
         this.$store.state.post = tmp[this.$route.params.slug]
+        this.$emit('updateHead')
       }else {
         console.log('ない')
-        this.$store.dispatch('recievePost',this.$route.params.slug)
+        let that = this
+        this.$store.dispatch('recievePost',this.$route.params.slug).then(()=> {
+          console.log('finished')
+
+
+        })
       }
 
     }

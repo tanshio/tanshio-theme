@@ -1,5 +1,6 @@
 import 'babel-polyfill'
 import Vue from 'vue'
+import VueHead from 'vue-head'
 
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
@@ -25,6 +26,7 @@ import Menu from 'components/layouts/Menu.vue'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
+Vue.use(VueHead)
 
 Vue.component('search', Search)
 Vue.component('list', List)

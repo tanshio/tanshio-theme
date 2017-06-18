@@ -5,41 +5,22 @@ import * as types from './mutation-types'
 
 import API from '../settings/API.js'
 
-const TERM_LIMIT = 100;
+const TERM_LIMIT = 100
 
-
-function test(){
-  return new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-      console.log("まず")
-      resolve()
-    },3000)
-  })
-}
-
-function test2(){
-  return new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-      console.log("まず1")
-      resolve()
-    },0)
-  })
-}
-
-function initCategories(){
+function initCategories () {
   return Vue.http.get(
     API.CATEGORIES,
     {
-      params:{ per_page:TERM_LIMIT}
+      params: {per_page: TERM_LIMIT}
     }
   )
 }
 
-function initTags(){
+function initTags () {
   return Vue.http.get(
     API.TAGS,
     {
-      params:{ per_page:TERM_LIMIT}
+      params: {per_page: TERM_LIMIT}
     }
   )
 }
@@ -59,8 +40,7 @@ function initTags(){
 //   ])
 // }
 
-
-export const recieveLatestPosts = ({ state, commit}) => {
+export const recieveLatestPosts = ({state, commit}) => {
   console.log('recieveLatestPosts')
   Vue.http.get(
     API.POSTS
@@ -82,42 +62,61 @@ export const recieveSearchPosts = ({ state, commit},query) => {
   ).then((response) => {
     console.log('recieveSearchPosts-end')
     console.log(response['body'])
-    commit(types.RECEIVE_SEARCH_POSTS,response['body'])
+    commit(types.RECEIVE_SEARCH_POSTS, response['body'])
   })
 }
 
-export const recievePost = ({ state, commit},slug) => {
+export const recievePost = ({state, commit}, slug) => {
   console.log('recievePost')
   Vue.http.get(
     API.POSTS,
     {
-      params:{
+      params: {
         slug: slug
       }
     }
   ).then((response) => {
     console.log('recievePost-end')
     console.log(response)
-    commit(types.RECEIVE_POST,response['body'][0])
+    commit(types.RECEIVE_POST, response['body'][0])
   })
 }
 
+export const infinityScroll = ({state, commit}) => {
+  if (state.scroll && state.mode === 'index') {
+    state.scroll = false
 
+    console.log('scrolled!')
 
-export const init = async ({ state, dispatch, commit },route) => {
+    state.count.index++
 
-  if(!state.list.current.length>0) {
+    Vue.http.get(
+      API.POSTS,
+      {
+        params: {
+          per_page: API.PER_PAGE,
+          page: state.count.index
+        }
+      }
+    ).then((response) => {
+      console.log('recieveLatestPosts-end')
+      commit(types.RECEIVE_LATEST_POSTS, response['body'])
+    })
+  }
+}
+
+export const init = async ({state, dispatch, commit}, route) => {
+  if (!state.list.current.length > 0) {
     // await initTaxonomies(state)
     dispatch('recieveLatestPosts')
   }
 
-  dispatch('recievePost',route.params.slug)
+  dispatch('recievePost', route.params.slug)
 
   // commit(types.INIT2,await test2())
 }
 
 export const getAllMessages = ({ commit }) => {
-
   console.log(commit)
   // api.getAllMessages(messages => {
   //   commit(types.RECEIVE_ALL, {

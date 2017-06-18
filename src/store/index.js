@@ -28,7 +28,8 @@ const state = {
   categories: [],
   tags: [],
   post: {},
-  tmp: {}
+  tmp: {},
+  scroll: true
 }
 
 export default new Vuex.Store({

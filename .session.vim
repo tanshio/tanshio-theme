@@ -1,6 +1,6 @@
 " ~/github/t-v/.session.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 08 5月 2017 at 02:14:20.
+" Created by session.vim 2.13.1 on 08 5月 2017 at 20:32:51.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -107,12 +107,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 30 - ((29 * winheight(0) + 26) / 53)
+let s:l = 27 - ((26 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-30
-normal! 034|
+27
+normal! 030|
 wincmd w
 argglobal
 edit src/store/mutation-types.js
@@ -130,9 +130,9 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 12
-normal! 047|
+normal! 012|
 wincmd w
-3wincmd w
+4wincmd w
 exe 'vert 1resize ' . ((&columns * 30 + 101) / 202)
 exe '2resize ' . ((&lines * 3 + 30) / 60)
 exe 'vert 2resize ' . ((&columns * 92 + 101) / 202)
@@ -168,7 +168,7 @@ if !getbufvar(s:bufnr_save, '&modified')
 endif
 execute "cd" fnameescape(s:cwd_save)
 1resize 57|vert 1resize 30|2resize 3|vert 2resize 92|3resize 53|vert 3resize 92|4resize 57|vert 4resize 78|
-3wincmd w
+4wincmd w
 tabnext 1
 if exists('s:wipebuf')
   if empty(bufname(s:wipebuf))
