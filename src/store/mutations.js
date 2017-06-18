@@ -15,8 +15,17 @@ export default {
     set(state, 'post', post)
   },
   [types.RECEIVE_LATEST_POSTS] (state, list) {
-    set(state.list, 'index', [...state.list.index, ...list])
-    set(state.list, 'current', state.list.index)
+
+    if(state.mode === 'index') {
+      set(state.list, 'index', [...state.list.index, ...list])
+      set(state.list, 'current', state.list.index)
+    } else if (/category-/.test(state.mode)) {
+      set(state.list.categories, state.mode.replace('category-', ''), [...state.list.categories[state.mode.replace('category-', '')], ...list])
+      set(state.list, 'current', state.list.categories[state.mode.replace('category-', '')])
+    } else {
+      set(state.list.tags, state.mode.replace('tags-', ''), [...state.list.tags[state.mode.replace('tags-', '')], ...list])
+      set(state.list, 'current', state.list.tags[state.mode.replace('tags-', '')])
+    }
     list.forEach((item) => {
       state.tmp[item.slug] = item
     })

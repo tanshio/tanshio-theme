@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="item in list">
+    <li v-for="item in list" @click="move">
       <template v-if="link ==='true'"><router-link :to="{ name: type, params: { slug: item.slug }}">{{item.name}}</router-link></template>
       <template v-else>{{item.name}}</template>
     </li>
@@ -19,6 +19,12 @@ export default {
     }
   },
   mount(){
+  },
+  methods: {
+    move: function() {
+      console.log('aaa')
+      document.querySelectorAll('.menu')[0].scrollTop = 0
+    }
   }
 }
 </script>

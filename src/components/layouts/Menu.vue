@@ -34,7 +34,7 @@
   height: 100vh;
   background: -webkit-linear-gradient(-62deg, rgb(169, 123, 129) 0%, rgb(210, 192, 189) 75%, rgb(193, 177, 179) 100%) rgb(175, 149, 145);
   overflow-y: auto;
-  backface-visibility: hidden;
+  /* backface-visibility: hidden; */
   -webkit-overflow-scrolling: touch;
 
   @media (--v-md) {

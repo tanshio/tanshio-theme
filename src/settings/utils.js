@@ -9,3 +9,10 @@ export function isMid(){
   const width = 1600
   return width -1 > window.innerWidth ? true : false
 }
+
+export function getTax (state) {
+  let tax = {}
+  tax.term = state.mode.replace(/(category-|tag-)/, '')
+  tax.name = /category-/.test(state.mode) ? 'categories' : 'tags'
+  return tax
+}

@@ -83,19 +83,32 @@ export const recievePost = ({state, commit}, slug) => {
 }
 
 export const infinityScroll = ({state, commit}) => {
-  if (state.scroll && state.mode === 'index') {
+  if (state.scroll) {
     state.scroll = false
+    let url = ''
+    let page
+    if (state.mode === 'index') {
+      state.count.index++
+      url = API.POSTS
+      page = state.count.index
+    } else if (/category-/.test(state.mode)) {
+      state.count.categories[state.mode.replace('category-', '')]++
+      url = API.POSTS_CATEGORY+state.mode.replace('category-', '')+'?_embed'
+      page = state.count.categories[state.mode.replace('category-', '')]
+    } else {
+      state.count.tags[state.mode.replace('tag-', '')]++
+      url = API.POSTS_TAG+state.mode.replace('tag-', '')+'?_embed'
+      page = state.count.tags[state.mode.replace('tag-')]
+    }
 
     console.log('scrolled!')
 
-    state.count.index++
-
     Vue.http.get(
-      API.POSTS,
+      url,
       {
         params: {
           per_page: API.PER_PAGE,
-          page: state.count.index
+          page: page
         }
       }
     ).then((response) => {

@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import {isSM,isMid} from '.,/../settings/utils.js'
+import {isSM,isMid} from '../../settings/utils.js'
 
 export default {
   computed: {
