@@ -167,7 +167,7 @@ function delete_API_data( $data, $item, $request ) {
     unset($data->data[$item]);
   }
 
-  unset($data->data["_embedded"]);
+  unset($data->data["_links"]);
 
   return $data;
 }

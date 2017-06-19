@@ -17,14 +17,33 @@ $ex_array = array(
 );
 ?>
 
-<script type="application/json" id="json-data">
+
+
 <?php
-$data = $response = new WP_REST_Posts_Controller('post');
-$posts = $response->get_items($request);
+$postsJSON = [];
+$restControllers = [];
+$_GET['_embed'] = true;
+// $restRequest = new WP_REST_Request();
+// while (have_posts()) { the_post();
+// if (!isset($restControllers[$post->post_type])) {
+//   $restControllers[$post->post_type] = new WP_REST_Posts_Controller($post->post_type);
+// }
+//
+// $preparedPost = $restControllers[$post->post_type]->prepare_item_for_response($post, $restRequest);
+// $postsJSON[] = json_encode($preparedPost->data);
+// unset( $_GET['_embed'] );
+// $request = WP_REST_Request::from_url("http://tanshio.dev/wp-json/wp/v2/posts?page=2&per_page=5");
+// $response = rest_do_request( $request );
+$request = new WP_REST_Request();
+// var_dump($request);
+$response = rest_do_request( $request );
+unset( $_GET['_embed'] );
 
-echo json_encode($posts, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>
+// }
+?>
+<script id="data-posts" type="application/json">
+<?php echo json_encode($response); ?>
 </script>
-
 <script src="<?php echo get_template_directory_uri() . '/dist/build.js'; ?>"></script>
 <?php wp_footer(); ?>
 
