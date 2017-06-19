@@ -4,7 +4,7 @@
     <item v-for='list in lists' :key='list.id' >
       <div v-on:click.capture="setPost(list,$event)">
         <transition name="fade">
-          <router-link :to="{ name: 'post', params: { slug: list.slug }}">
+          <router-link :to="{ name: 'post', params: { slug: decodeURI(list.slug) }}">
             <div class="list-inner">
               <ymd :time="list.date"></ymd>
               <template v-if="list['_embedded']">

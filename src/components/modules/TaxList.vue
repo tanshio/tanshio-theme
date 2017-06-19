@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="item in list" @click="move">
-      <template v-if="link ==='true'"><router-link :to="{ name: type, params: { slug: item.slug }}">{{item.name}}</router-link></template>
+      <template v-if="link ==='true'"><router-link :to="{ name: type, params: { slug: decodeURI(item.slug) }}">{{item.name}}</router-link></template>
       <template v-else>{{item.name}}</template>
     </li>
   </ul>

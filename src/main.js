@@ -71,7 +71,7 @@ const router = new VueRouter({
   scrollBehavior,
   routes: [
     { path: '/', name: 'home', component: Home },
-    { path: '/:slug', name: 'post', component: Post},
+    { path: '/:slug/', name: 'post', component: Post},
     { path: '/category/:slug', name: 'categories', component: Categories },
     { path: '/tags/:slug', name: 'tags', component: Tags }
   ]
