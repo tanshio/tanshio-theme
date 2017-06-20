@@ -39,36 +39,36 @@ export default {
 
     console.log("app.vue")
 
-    async function test(that){
-
-        await Promise.all([
-          that.$http.get(
-            API.CATEGORIES,
-          ).then((response) => {
-            that.$store.state.categories = response['body']
-            console.log("cat")
-          }),
-          that.$http.get(
-            API.TAGS,
-            {
-              params:{ per_page:100}
-            }
-          ).then((response) => {
-            that.$store.state.tags = response['body']
-            console.log("tag")
-          })
-        ])
-
-        console.log("async終わり")
-    }
-
-    test(this).then(()=>{
-        // 全てresolveが呼ばれた場合、この関数が実行される
-        console.log("全部成功したよ！");
-    }).catch(()=>{
-        // 途中1回でもreject関数が呼ばれた場合、この関数が実行される
-        console.log("途中で失敗したみたい…");
-    });
+    // async function test(that){
+    //
+    //     await Promise.all([
+    //       that.$http.get(
+    //         API.CATEGORIES,
+    //       ).then((response) => {
+    //         that.$store.state.categories = response['body']
+    //         console.log("cat")
+    //       }),
+    //       that.$http.get(
+    //         API.TAGS,
+    //         {
+    //           params:{ per_page:100}
+    //         }
+    //       ).then((response) => {
+    //         that.$store.state.tags = response['body']
+    //         console.log("tag")
+    //       })
+    //     ])
+    //
+    //     console.log("async終わり")
+    // }
+    //
+    // test(this).then(()=>{
+    //     // 全てresolveが呼ばれた場合、この関数が実行される
+    //     console.log("全部成功したよ！");
+    // }).catch(()=>{
+    //     // 途中1回でもreject関数が呼ばれた場合、この関数が実行される
+    //     console.log("途中で失敗したみたい…");
+    // });
 
   },
 

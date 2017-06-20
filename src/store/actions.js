@@ -68,18 +68,25 @@ export const recieveSearchPosts = ({ state, commit},query) => {
 
 export const recievePost = ({state, commit}, slug) => {
   console.log('recievePost')
-  Vue.http.get(
-    API.POSTS,
-    {
-      params: {
-        slug: slug
+
+  const $data = document.getElementById('data-list')
+  if ($data) {
+    commit(types.RECEIVE_POST, JSON.parse($data.textContent)[0])
+    document.body.removeChild($data)
+  } else {
+    Vue.http.get(
+      API.POSTS,
+      {
+        params: {
+          slug: slug
+        }
       }
-    }
-  ).then((response) => {
-    console.log('recievePost-end')
-    console.log(response)
-    commit(types.RECEIVE_POST, response['body'][0])
-  })
+    ).then((response) => {
+      console.log('recievePost-end')
+      console.log(response)
+      commit(types.RECEIVE_POST, response['body'][0])
+    })
+  }
 }
 
 export const infinityScroll = ({state, commit}) => {

@@ -15,8 +15,7 @@ export default {
     set(state, 'post', post)
   },
   [types.RECEIVE_LATEST_POSTS] (state, list) {
-
-    if(state.mode === 'index') {
+    if (state.mode === 'index') {
       set(state.list, 'index', [...state.list.index, ...list])
       set(state.list, 'current', state.list.index)
     } else if (/category-/.test(state.mode)) {
