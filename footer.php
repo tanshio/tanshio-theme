@@ -13,7 +13,11 @@
 
 <script id="data-list" type="application/json">
 <?php
-$result = file_get_contents("http://tanshio.dev/wp-json/wp/v2/posts?page=1&per_page=5&_embed");
+$url = null;
+if (is_single()) {
+  $url = site_url()."/wp-json/wp/v2/posts?_embed&slug=".$post->post_name;
+}
+$result = file_get_contents($url);
 echo $result;
 ?>
 </script>
