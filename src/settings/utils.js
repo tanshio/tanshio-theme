@@ -10,6 +10,8 @@ export function isMid(){
   return width -1 > window.innerWidth ? true : false
 }
 
+export const qsa = document.querySelectorAll.bind(document)
+
 export function getTax (state) {
   let tax = {}
   tax.term = state.mode.replace(/(category-|tag-)/, '')

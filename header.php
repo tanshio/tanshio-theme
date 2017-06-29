@@ -10,17 +10,19 @@
  */
 
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-
+<!-- 特急対応 -->
+<style>
+@media (max-width: 780px) {
+	.home.main, .categories.main, .tag.main {display:none}
+}
+</style>
 <?php wp_head(); ?>
 </head>
-
 <body>
     <div id="app">
         <router-view></router-view>
     </div>
-

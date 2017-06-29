@@ -1,7 +1,15 @@
 <template>
   <article-content v-if="checkSearch"></article-content>
-  <div v-else>
-    <span>Home</span>
+  <div v-else tabindex="0" class="l-wrapper">
+    <div>
+      <h1>ABOUT</h1>
+      <h2>たんしお / 丹野 翔太について</h2>
+      <p>仙台でフリーのWebデザイナーとして働いています。<br>色々やっていたらアプリやサーバーやデータベースや広告運用など浅く広い感じになりました。</p>
+      <ul>
+        <li>TWITTER</li>
+        <li>GITHUB</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -48,4 +56,29 @@ export default {
   },
 }
 </script>
+<style scoped>
+.l-wrapper {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #ece8e8;
+  & div {
+    position: relative;
+    z-index: 2;
+    & h1, & h2 {
+      background: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      /* text-shadow: 0 0 0 #000; */
+    }
+    & p {
+      line-height: 1.8;
+    }
 
+
+  }
+}
+</style>

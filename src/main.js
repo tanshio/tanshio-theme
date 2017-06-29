@@ -6,6 +6,8 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import store from './store'
 
+import VueAnalytics from 'vue-analytics'
+
 import App from 'App.vue'
 
 import Home from 'Home.vue'
@@ -75,6 +77,11 @@ const router = new VueRouter({
     { path: '/category/:slug', name: 'categories', component: Categories },
     { path: '/tags/:slug', name: 'tags', component: Tags }
   ]
+})
+
+Vue.use(VueAnalytics, {
+  id: 'UA-8982785-5',
+  router
 })
 
 new Vue({

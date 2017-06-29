@@ -1,9 +1,6 @@
 <template>
-      <h1 class="logo">
-          <svg version="1.1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-	 x="0px" y="0px" width="564.9px" height="51.8px" viewBox="0 0 564.9 51.8" style="enable-background:new 0 0 564.9 51.8;"
-   xml:space="preserve">
+  <h1 class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="564.9px" height="51.8px" viewBox="0 0 564.9 51.8">
    <desc>たんしおどっとねっと</desc>
 <g>
 	<path d="M9.5,51.8c-0.1,0-0.1,0-0.2,0l-4.4-0.6c-0.4-0.1-0.8-0.2-1-0.6c-0.3-0.4-0.4-0.8-0.3-1.2l4.3-31.5c0.1-0.6,0-1.1-0.3-1.4

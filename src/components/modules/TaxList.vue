@@ -10,16 +10,6 @@
 <script>
 export default {
   props: ['list','type','link'],
-  // computed: {
-
-  // },
-  data () {
-    return {
-
-    }
-  },
-  mount(){
-  },
   methods: {
     move: function() {
       console.log('aaa')
@@ -36,8 +26,8 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: inline;
   &.cat {
-    display: inline;
     & li {
       background: var(--g-color);
       box-shadow: 0px 1px 5px 1px #d2cece;
@@ -46,7 +36,6 @@ ul {
     }
   }
   &.tag {
-    display: inline;
     & li {
       background: #c2b2b3;
       box-shadow: 0px 1px 5px 1px #d2cece;

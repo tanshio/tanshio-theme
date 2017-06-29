@@ -3,14 +3,6 @@ import * as types from './mutation-types'
 
 export default {
 
-  [types.INIT2] (state) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log('init2')
-        resolve()
-      }, 1000)
-    })
-  },
   [types.RECEIVE_POST] (state, post) {
     set(state, 'post', post)
   },

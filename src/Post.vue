@@ -1,7 +1,5 @@
 <template>
-  <transition name="fade">
-    <article-content></article-content>
-  </transition>
+  <article-content></article-content>
 </template>
 
 <script>
@@ -92,7 +90,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 
 pre {
