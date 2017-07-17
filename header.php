@@ -10,17 +10,15 @@
  */
 
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-
+<title><?php wp_title(); ?></title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/yakuhanjp/1.3.1/css/yakuhanjp.min.css">
 <?php wp_head(); ?>
 </head>
-
 <body>
     <div id="app">
         <router-view></router-view>
     </div>
-

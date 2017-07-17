@@ -1,24 +1,23 @@
 <template>
-  <transition name="fade">
-    <article-content></article-content>
-  </transition>
+  <article-content></article-content>
 </template>
 
 <script>
 import {isSM,isMid} from './settings/utils.js'
 
 export default {
-  watch : {
-    '$route': 'fetchData',
-    title: function() {
-      this.$emit('updateHead')
-    }
-  },
+  // watch : {
+  //   '$route': 'fetchData',
+  //   title: function() {
+  //     this.$emit('updateHead')
+  //   }
+  // },
   computed: {
     post () {
       return this.$store.getters.post
     },
     title() {
+      console.log(this.post)
       return this.post["title"] ? this.post["title"]["rendered"] : ""
     },
   },
@@ -35,16 +34,11 @@ export default {
     next()
   },
 
-  head: {
+  metaInfo() {
+    return {
     // To use "this" in the component, it is necessary to return the object through a function
-    title: function () {
-      return {
-        inner: this.title
-      }
-    },
-    meta: [
-      { name: 'description', content: 'My description', id: 'desc' }
-    ]
+      title: `${this.title} | たんしおどっとねっと`
+    }
   },
 
   methods: {
@@ -92,69 +86,69 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 
-pre {
-  white-space: pre-wrap;
-}
-
-.topic h1 {
-  background: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-}
-
-
-.view {
-  color: #564b4b;
-  line-height: 1.8;
-  p {
-    text-align: justify;
-    &+p {
-      margin-top: 1.6rem
-    }
-    & + h1,
-    & + h2,
-    & + h3,
-    & + h4 {
-      margin-top: 4rem
-    }
-  }
-
-  h1{
-    line-height: 1.5
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    letter-spacing: -.05em
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  a {
-    color: var(--g-color);
-  }
-}
-
-.topicList {
-  display: none;
-  @media screen and (min-width: 780px) {
-    display: block;
-  }
-}
-
-.back {
-  display: block;
-  @media screen and (min-width: 780px) {
-    display: none;
-  }
-}
-
+/* pre { */
+/*   white-space: pre-wrap; */
+/* } */
+/*  */
+/* .topic h1 { */
+/*   background: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%); */
+/*   -webkit-text-fill-color: transparent; */
+/*   -webkit-background-clip: text; */
+/* } */
+/*  */
+/*  */
+/* .view { */
+/*   color: #564b4b; */
+/*   line-height: 1.8; */
+/*   p { */
+/*     text-align: justify; */
+/*     &+p { */
+/*       margin-top: 1.6rem */
+/*     } */
+/*     & + h1, */
+/*     & + h2, */
+/*     & + h3, */
+/*     & + h4 { */
+/*       margin-top: 4rem */
+/*     } */
+/*   } */
+/*  */
+/*   h1{ */
+/*     line-height: 1.5 */
+/*   } */
+/*  */
+/*   h1, */
+/*   h2, */
+/*   h3, */
+/*   h4 { */
+/*     letter-spacing: -.05em */
+/*   } */
+/*  */
+/*   img { */
+/*     max-width: 100%; */
+/*     height: auto; */
+/*   } */
+/*   a { */
+/*     color: var(--g-color); */
+/*   } */
+/* } */
+/*  */
+/* .topicList { */
+/*   display: none; */
+/*   @media screen and (min-width: 780px) { */
+/*     display: block; */
+/*   } */
+/* } */
+/*  */
+/* .back { */
+/*   display: block; */
+/*   @media screen and (min-width: 780px) { */
+/*     display: none; */
+/*   } */
+/* } */
+/*  */
 
 </style>

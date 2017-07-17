@@ -1,16 +1,10 @@
 import { set } from 'vue'
 import * as types from './mutation-types'
 
+import {getTax} from '../settings/utils.js'
+
 export default {
 
-  [types.INIT2] (state) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log('init2')
-        resolve()
-      }, 1000)
-    })
-  },
   [types.RECEIVE_POST] (state, post) {
     set(state, 'post', post)
   },
@@ -18,13 +12,13 @@ export default {
     if (state.mode === 'index') {
       set(state.list, 'index', [...state.list.index, ...list])
       set(state.list, 'current', state.list.index)
-    } else if (/category-/.test(state.mode)) {
-      set(state.list.categories, state.mode.replace('category-', ''), [...state.list.categories[state.mode.replace('category-', '')], ...list])
-      set(state.list, 'current', state.list.categories[state.mode.replace('category-', '')])
     } else {
-      set(state.list.tags, state.mode.replace('tags-', ''), [...state.list.tags[state.mode.replace('tags-', '')], ...list])
-      set(state.list, 'current', state.list.tags[state.mode.replace('tags-', '')])
+      let name = getTax(state).name
+      let term = getTax(state).term
+      set(state.list[name], term, [...state.list[name][term], ...list])
+      set(state.list, 'current', state.list[name][term])
     }
+
     list.forEach((item) => {
       state.tmp[item.slug] = item
     })

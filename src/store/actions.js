@@ -102,6 +102,9 @@ export const infinityScroll = ({state, commit}) => {
       state.count.categories[state.mode.replace('category-', '')]++
       url = API.POSTS_CATEGORY+state.mode.replace('category-', '')+'?_embed'
       page = state.count.categories[state.mode.replace('category-', '')]
+      console.log(page)
+      console.log(state.mode.replace('category-', ''))
+      console.log("⇡")
     } else {
       state.count.tags[state.mode.replace('tag-', '')]++
       url = API.POSTS_TAG+state.mode.replace('tag-', '')+'?_embed'
@@ -136,23 +139,12 @@ export const init = async ({state, dispatch, commit}, route) => {
   // commit(types.INIT2,await test2())
 }
 
-export const getAllMessages = ({ commit }) => {
-  console.log(commit)
-  // api.getAllMessages(messages => {
-  //   commit(types.RECEIVE_ALL, {
-  //     messages
-  //   })
-  // })
-}
-
-// export const sendMessage = ({ commit }, payload) => {
-//   api.createMessage(payload, message => {
-//     commit(types.RECEIVE_MESSAGE, {
-//       message
-//     })
-//   })
+// export const getAllMessages = ({ commit }) => {
+//   console.log(commit)
+//   // api.getAllMessages(messages => {
+//   //   commit(types.RECEIVE_ALL, {
+//   //     messages
+//   //   })
+//   // })
 // }
 //
-// export const switchThread = ({ commit }, payload) => {
-//   commit(types.SWITCH_THREAD, payload)
-// }

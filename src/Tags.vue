@@ -8,6 +8,13 @@
   import API from './settings/API.js'
 
   export default {
+    metaInfo() {
+      console.log(this.$route)
+      return {
+        // To use "this" in the component, it is necessary to return the object through a function
+        title: `${this.$route.params.slug} | たんしおどっとねっと`
+      }
+    },
     computed: {
 
     },

@@ -1,10 +1,14 @@
-import 'babel-polyfill'
+// import 'babel-polyfill'
 import Vue from 'vue'
-import VueHead from 'vue-head'
+// import VueHead from 'vue-head'
+import Meta from 'vue-meta'
+
 
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import store from './store'
+
+import VueAnalytics from 'vue-analytics'
 
 import App from 'App.vue'
 
@@ -17,16 +21,16 @@ import Tags from 'Tags.vue'
 import Lists from 'components/modules/TaxList.vue'
 import Search from 'components/modules/Search.vue'
 import YMD from 'components/modules/Date.vue'
+import Social from 'components/modules/Social.vue'
 
 import Logo from 'components/layouts/logo.vue'
 import Content from 'components/layouts/Content.vue'
 import List from 'components/layouts/List.vue'
 import Item from 'components/layouts/Item.vue'
 import Menu from 'components/layouts/Menu.vue'
-
 Vue.use(VueResource)
 Vue.use(VueRouter)
-Vue.use(VueHead)
+Vue.use(Meta)
 
 Vue.component('search', Search)
 Vue.component('list', List)
@@ -36,6 +40,7 @@ Vue.component('layout-menu', Menu)
 Vue.component('cat-list', Lists)
 Vue.component('logo', Logo)
 Vue.component('ymd', YMD)
+Vue.component('social', Social)
 
 // scrollBehavior:
 // - only available in html5 history mode
@@ -72,9 +77,14 @@ const router = new VueRouter({
   routes: [
     { path: '/', name: 'home', component: Home },
     { path: '/:slug/', name: 'post', component: Post},
-    { path: '/category/:slug', name: 'categories', component: Categories },
-    { path: '/tags/:slug', name: 'tags', component: Tags }
+    { path: '/category/:slug/', name: 'categories', component: Categories },
+    { path: '/tag/:slug/', name: 'tags', component: Tags }
   ]
+})
+
+Vue.use(VueAnalytics, {
+  id: 'UA-8982785-5',
+  router
 })
 
 new Vue({
