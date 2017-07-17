@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 import * as getters from './getters'
 import * as actions from './actions'
 import mutations from './mutations'
-
+// document.title = ''
 Vue.use(Vuex)
 
 const state = {

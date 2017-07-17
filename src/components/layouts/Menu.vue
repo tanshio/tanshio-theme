@@ -50,9 +50,19 @@
   backface-visibility: hidden;
   text-align: center;
   background-blend-mode: screen;
-  padding: 20px 0;
-  margin: 0;
+  margin: 30px 0 30px;
+  padding-bottom: 10%;
+  height: 0;
+  position: relative;
+  /* margin: 0; */
   -webkit-filter: drop-shadow(2px 1px 1px #9a7b7b);
+  & svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .menu a {

@@ -1,24 +1,23 @@
 <template>
-  <transition name="fade">
-    <article-content></article-content>
-  </transition>
+  <article-content></article-content>
 </template>
 
 <script>
 import {isSM,isMid} from './settings/utils.js'
 
 export default {
-  watch : {
-    '$route': 'fetchData',
-    title: function() {
-      this.$emit('updateHead')
-    }
-  },
+  // watch : {
+  //   '$route': 'fetchData',
+  //   title: function() {
+  //     this.$emit('updateHead')
+  //   }
+  // },
   computed: {
     post () {
       return this.$store.getters.post
     },
     title() {
+      console.log(this.post)
       return this.post["title"] ? this.post["title"]["rendered"] : ""
     },
   },
@@ -35,16 +34,11 @@ export default {
     next()
   },
 
-  head: {
+  metaInfo() {
+    return {
     // To use "this" in the component, it is necessary to return the object through a function
-    title: function () {
-      return {
-        inner: this.title
-      }
-    },
-    meta: [
-      { name: 'description', content: 'My description', id: 'desc' }
-    ]
+      title: `${this.title} | たんしおどっとねっと`
+    }
   },
 
   methods: {
@@ -92,7 +86,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 
 pre {

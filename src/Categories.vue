@@ -8,6 +8,12 @@ import Button from './components/modules/Button.vue'
 import API from './settings/API.js'
 
 export default {
+  metaInfo() {
+    return {
+      // To use "this" in the component, it is necessary to return the object through a function
+      title: `${this.$route.params.slug} | たんしおどっとねっと`
+    }
+  },
   computed: {
 
   },

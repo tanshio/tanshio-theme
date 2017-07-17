@@ -1,10 +1,3 @@
-// export const SWITCH_THREAD = 'SWITCH_THREAD'
-// export const RECEIVE_ALL = 'RECEIVE_ALL'
-// export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE'
-
-
-export const INIT = 'INIT'
-export const INIT2 = 'INIT2'
 export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_LATEST_POSTS = 'RECEIVE_LATEST_POSTS'
 export const RECEIVE_SEARCH_POSTS = 'RECEIVE_SEARCH_POSTS'

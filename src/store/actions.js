@@ -136,23 +136,12 @@ export const init = async ({state, dispatch, commit}, route) => {
   // commit(types.INIT2,await test2())
 }
 
-export const getAllMessages = ({ commit }) => {
-  console.log(commit)
-  // api.getAllMessages(messages => {
-  //   commit(types.RECEIVE_ALL, {
-  //     messages
-  //   })
-  // })
-}
-
-// export const sendMessage = ({ commit }, payload) => {
-//   api.createMessage(payload, message => {
-//     commit(types.RECEIVE_MESSAGE, {
-//       message
-//     })
-//   })
+// export const getAllMessages = ({ commit }) => {
+//   console.log(commit)
+//   // api.getAllMessages(messages => {
+//   //   commit(types.RECEIVE_ALL, {
+//   //     messages
+//   //   })
+//   // })
 // }
 //
-// export const switchThread = ({ commit }, payload) => {
-//   commit(types.SWITCH_THREAD, payload)
-// }
