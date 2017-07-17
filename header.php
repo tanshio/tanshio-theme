@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 /**
  * The header for our theme

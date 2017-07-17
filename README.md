@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
-
+rsync -avz ./tanshio/ vps:/usr/share/nginx/html/tanshio/wp-content/themes/tanshio/
 _s
 ===
 
