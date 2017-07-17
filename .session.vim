@@ -1,6 +1,6 @@
-" ~/github/t-v/.session.vim:
+" ~/Local Sites/tanshio/app/public/wp-content/themes/tanshio/.session.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 08 5月 2017 at 20:32:51.
+" Created by session.vim 2.13.1 on 14 7月 2017 at 16:06:35.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -16,42 +16,19 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/github/t-v
+cd ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +18 index.html
-badd +29 src/App.vue
-badd +197 src/components/layouts/Content.vue
-badd +23 src/Post.vue
-badd +55 src/components/modules/TaxList.vue
-badd +51 src/components/layouts/List.vue
-badd +16 src/components/layouts/Item.vue
-badd +66 src/components/modules/Search.vue
-badd +20 src/Home.vue
-badd +66 src/store/actions.js
-badd +22 src/store/getters.js
-badd +20 src/store/index.js
-badd +11 src/store/mutation-types.js
-badd +25 src/store/mutations.js
-badd +55 src/main.js
-badd +43 webpack.config.js
-badd +23 postcss.config.js
-badd +30 package.json
-badd +6 .babelrc
-badd +11 src/settings/utils.js
-badd +74 src/components/layouts/logo.vue
-badd +56 src/components/layouts/Menu.vue
-badd +1 src/components/layouts/header.vue
-badd +5 src/styles/_var.css
-badd +18 src/components/modules/Date.vue
-badd +27 src/Categories.vue
-badd +16 src/Tags.vue
-badd +13 src/settings/API.js
+badd +1 ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio/src/store/mutation-types.js
+badd +1 ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio/src/store/mutations.js
+badd +115 ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio/src/store/actions.js
+badd +20 ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio/src/settings/utils.js
+badd +0 ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio/README.md
 argglobal
 silent! argdel *
-edit src/store/mutations.js
+edit ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio/README.md
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -59,21 +36,14 @@ wincmd _ | wincmd |
 vsplit
 2wincmd h
 wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 30 + 101) / 202)
-exe '2resize ' . ((&lines * 3 + 30) / 60)
-exe 'vert 2resize ' . ((&columns * 92 + 101) / 202)
-exe '3resize ' . ((&lines * 53 + 30) / 60)
-exe 'vert 3resize ' . ((&columns * 92 + 101) / 202)
-exe 'vert 4resize ' . ((&columns * 78 + 101) / 202)
+exe 'vert 1resize ' . ((&columns * 36 + 99) / 198)
+exe 'vert 2resize ' . ((&columns * 85 + 99) / 198)
+exe 'vert 3resize ' . ((&columns * 75 + 99) / 198)
 argglobal
 enew
 " file NERD_tree_2
@@ -87,17 +57,6 @@ setlocal fdn=20
 setlocal nofen
 wincmd w
 argglobal
-enew
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-wincmd w
-argglobal
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -107,15 +66,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 27 - ((26 * winheight(0) + 26) / 53)
+let s:l = 46 - ((8 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-27
-normal! 030|
+46
+normal! 0
 wincmd w
 argglobal
-edit src/store/mutation-types.js
+edit ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio/src/store/mutations.js
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -125,20 +84,17 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 12 - ((11 * winheight(0) + 28) / 57)
+let s:l = 36 - ((35 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-12
-normal! 012|
+36
+normal! 0
 wincmd w
-4wincmd w
-exe 'vert 1resize ' . ((&columns * 30 + 101) / 202)
-exe '2resize ' . ((&lines * 3 + 30) / 60)
-exe 'vert 2resize ' . ((&columns * 92 + 101) / 202)
-exe '3resize ' . ((&lines * 53 + 30) / 60)
-exe 'vert 3resize ' . ((&columns * 92 + 101) / 202)
-exe 'vert 4resize ' . ((&columns * 78 + 101) / 202)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 36 + 99) / 198)
+exe 'vert 2resize ' . ((&columns * 85 + 99) / 198)
+exe 'vert 3resize ' . ((&columns * 75 + 99) / 198)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
 "   silent exe 'bwipe ' . s:wipebuf
@@ -159,7 +115,7 @@ let &so = s:so_save | let &siso = s:siso_save
 tabnext 1
 let s:bufnr_save = bufnr("%")
 let s:cwd_save = getcwd()
-NERDTree ~/github/t-v
+NERDTree ~/Local\ Sites/tanshio/app/public/wp-content/themes/tanshio
 if !getbufvar(s:bufnr_save, '&modified')
   let s:wipebuflines = getbufline(s:bufnr_save, 1, '$')
   if len(s:wipebuflines) <= 1 && empty(get(s:wipebuflines, 0, ''))
@@ -167,8 +123,8 @@ if !getbufvar(s:bufnr_save, '&modified')
   endif
 endif
 execute "cd" fnameescape(s:cwd_save)
-1resize 57|vert 1resize 30|2resize 3|vert 2resize 92|3resize 53|vert 3resize 92|4resize 57|vert 4resize 78|
-4wincmd w
+1resize 61|vert 1resize 36|2resize 61|vert 2resize 85|3resize 61|vert 3resize 75|
+2wincmd w
 tabnext 1
 if exists('s:wipebuf')
   if empty(bufname(s:wipebuf))

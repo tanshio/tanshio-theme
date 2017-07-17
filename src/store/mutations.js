@@ -13,8 +13,10 @@ export default {
       set(state.list, 'index', [...state.list.index, ...list])
       set(state.list, 'current', state.list.index)
     } else {
-      set(state.list[getTax.name], getTax.term, [...state.list[getTax.name][getTax.term], ...list])
-      set(state.list, 'current', state.list[getTax.name][getTax.term])
+      let name = getTax(state).name
+      let term = getTax(state).term
+      set(state.list[name], term, [...state.list[name][term], ...list])
+      set(state.list, 'current', state.list[name][term])
     }
 
     list.forEach((item) => {

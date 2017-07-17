@@ -1,24 +1,24 @@
 <template>
   <div>
     <ul :class="type?type:'social-link'">
-      <li>
+      <li class="social-link__fb">
         <a :href="type?'https://www.facebook.com/shota.tanno.75':'https://www.facebook.com/sharer/sharer.php?u='+url" target="_blank" rel="noopener">
           <svg class="social__icon social__icon--fb" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 156 300">
             <path class="fb" d="M101.000,300.000 C101.000,300.000 101.000,163.000 101.000,163.000 C101.000,163.000 147.000,163.000 147.000,163.000 C147.000,163.000 154.000,110.000 154.000,110.000 C154.000,110.000 101.000,110.000 101.000,110.000 C101.000,110.000 101.000,76.000 101.000,76.000 C101.000,60.552 105.857,50.000 128.000,50.000 C128.000,50.000 156.000,50.000 156.000,50.000 C156.000,50.000 156.000,2.000 156.000,2.000 C151.113,1.351 134.503,-0.000 115.000,-0.000 C74.282,-0.000 46.000,25.336 46.000,71.000 C46.000,71.000 46.000,110.000 46.000,110.000 C46.000,110.000 0.000,110.000 0.000,110.000 C0.000,110.000 0.000,163.000 0.000,163.000 C0.000,163.000 46.000,163.000 46.000,163.000 C46.000,163.000 46.000,300.000 46.000,300.000 C46.000,300.000 101.000,300.000 101.000,300.000 Z"/>
           </svg>
         </a>
       </li>
-      <li>
+      <li class="social-link__tw">
         <a :href="type?'https://twitter.com/_tanshio':`https://twitter.com/intent/tweet?url=${url}&text=${title}`" target="_blank" rel="noopener">
           <div v-html="twitter"></div>
         </a>
       </li>
-      <li v-if="type">
-        <a :href="type?'':'https://github.com/tanshio'" target="_blank" rel="noopener">
+      <li v-if="type!=='home-icon'">
+        <a :href="type?'https://github.com/tanshio':''" target="_blank" rel="noopener">
           <div v-html="github"></div>
         </a>
       </li>
-      <li v-if="type!=='home-icon'">
+      <li v-if="type!=='home-icon'" class="social-link__pocket">
         <a :href="type?'':`http://getpocket.com/edit?url=${url}&title=${title}`" target="_blank" rel="noopener">
           <div v-html="pocket"></div>
         </a>
@@ -85,17 +85,20 @@
 <style>
 .home-icon {
 
-  & a {
-    color: #b45e69;
-    transition: all .6s ease-in-out;
-    &:hover {
-      opacity: .6;
-      transform: translateY(-25%);
-    }
-    & svg {
-      fill: #b45e69;
+  & li {
+    & a {
+      color: #b45e69;
+      transition: all .6s ease-in-out !important;
+      &:hover {
+        opacity: .6;
+        transform: translateY(-25%);
+      }
+      & svg {
+        fill: #b45e69;
+      }
     }
   }
+
   & .social__icon {
     width: 22px;
     height: 22px;
@@ -103,6 +106,44 @@
 }
 </style>
 <style scoped>
+
+.social-link {
+  & li {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    /* background-color: #ccc; */
+    border-radius: 50%;
+    & svg {
+      position: absolute;
+      fill: #fff;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    & a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      & div {
+
+      }
+    }
+  }
+  & &__fb {
+    background-color: #4f5f80;
+  }
+  & &__tw {
+    background-color: #67a1c4;
+  }
+  & &__pocket {
+    background-color: #c4616d;
+  }
+}
+
+
 input {
   padding: .5rem;
   width: 100%;

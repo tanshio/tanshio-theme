@@ -14,7 +14,7 @@ export const qsa = document.querySelectorAll.bind(document)
 
 export function getTax (state) {
   let tax = {}
-  tax.term = state.mode.replace(/(category-|tag-)/, '')
+  tax.term = state.mode.replace(/(category-|tax-)/, '')
   tax.name = /category-/.test(state.mode) ? 'categories' : 'tags'
   return tax
 }

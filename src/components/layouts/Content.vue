@@ -1,5 +1,5 @@
 <template>
-    <div tabindex="0" class="l-wrapper">
+    <div tabindex="0" class="l-wrapper article-main">
       <div class="topic">
 
         <div @click="back" class="back">
@@ -136,7 +136,7 @@ pre {
   }
 }
 
-.view {
+.article-main {
   color: #564b4b;
   line-height: 1.8;
   & p {

@@ -9,8 +9,6 @@
 
 <script>
 export default {
-
-
   props: ['list','type','link'],
   methods: {
     move: function() {

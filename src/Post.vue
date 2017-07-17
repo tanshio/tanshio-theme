@@ -89,66 +89,66 @@ export default {
 <style scoped>
 
 
-pre {
-  white-space: pre-wrap;
-}
-
-.topic h1 {
-  background: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-}
-
-
-.view {
-  color: #564b4b;
-  line-height: 1.8;
-  p {
-    text-align: justify;
-    &+p {
-      margin-top: 1.6rem
-    }
-    & + h1,
-    & + h2,
-    & + h3,
-    & + h4 {
-      margin-top: 4rem
-    }
-  }
-
-  h1{
-    line-height: 1.5
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    letter-spacing: -.05em
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  a {
-    color: var(--g-color);
-  }
-}
-
-.topicList {
-  display: none;
-  @media screen and (min-width: 780px) {
-    display: block;
-  }
-}
-
-.back {
-  display: block;
-  @media screen and (min-width: 780px) {
-    display: none;
-  }
-}
-
+/* pre { */
+/*   white-space: pre-wrap; */
+/* } */
+/*  */
+/* .topic h1 { */
+/*   background: -webkit-linear-gradient(-62deg, rgb(179, 86, 98) 0%, rgb(191, 160, 163) 50%, rgb(234, 182, 182) 100%); */
+/*   -webkit-text-fill-color: transparent; */
+/*   -webkit-background-clip: text; */
+/* } */
+/*  */
+/*  */
+/* .view { */
+/*   color: #564b4b; */
+/*   line-height: 1.8; */
+/*   p { */
+/*     text-align: justify; */
+/*     &+p { */
+/*       margin-top: 1.6rem */
+/*     } */
+/*     & + h1, */
+/*     & + h2, */
+/*     & + h3, */
+/*     & + h4 { */
+/*       margin-top: 4rem */
+/*     } */
+/*   } */
+/*  */
+/*   h1{ */
+/*     line-height: 1.5 */
+/*   } */
+/*  */
+/*   h1, */
+/*   h2, */
+/*   h3, */
+/*   h4 { */
+/*     letter-spacing: -.05em */
+/*   } */
+/*  */
+/*   img { */
+/*     max-width: 100%; */
+/*     height: auto; */
+/*   } */
+/*   a { */
+/*     color: var(--g-color); */
+/*   } */
+/* } */
+/*  */
+/* .topicList { */
+/*   display: none; */
+/*   @media screen and (min-width: 780px) { */
+/*     display: block; */
+/*   } */
+/* } */
+/*  */
+/* .back { */
+/*   display: block; */
+/*   @media screen and (min-width: 780px) { */
+/*     display: none; */
+/*   } */
+/* } */
+/*  */
 
 </style>

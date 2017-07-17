@@ -102,6 +102,9 @@ export const infinityScroll = ({state, commit}) => {
       state.count.categories[state.mode.replace('category-', '')]++
       url = API.POSTS_CATEGORY+state.mode.replace('category-', '')+'?_embed'
       page = state.count.categories[state.mode.replace('category-', '')]
+      console.log(page)
+      console.log(state.mode.replace('category-', ''))
+      console.log("⇡")
     } else {
       state.count.tags[state.mode.replace('tag-', '')]++
       url = API.POSTS_TAG+state.mode.replace('tag-', '')+'?_embed'

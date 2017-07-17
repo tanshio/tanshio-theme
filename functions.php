@@ -27,15 +27,13 @@ function create_TOC( $data, $item, $request ) {
 add_filter( 'rest_prepare_post', 'create_TOC', 10, 4 );
 
 function delete_API_data( $data, $item, $request ) {
-  $list = ['guid','status','type','expert','author','comment_status','ping_status','sticky','format','meta','_links','excerpt','categories',
-  'tags','template','featured_media'];
+  $list = ['guid','status','type','expert','author','comment_status','ping_status','sticky','format','meta','_links','excerpt','categories','tags','template','featured_media'];
 
   foreach ($list as $item) {
     unset($data->data[$item]);
   }
 
   // unset($data->data["_links"]);
-
   return $data;
 }
 
