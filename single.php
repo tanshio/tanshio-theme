@@ -11,7 +11,7 @@ get_header(); ?>
 
 <script id="data-list" type="application/json">
 [<?php
-$result = file_get_contents("https://tanshio.net/wp-json/wp/v2/posts/".get_the_ID().'?_embed');
+$result = file_get_contents("http://tanshio.dev/wp-json/wp/v2/posts/".get_the_ID().'?_embed');
 echo $result;
 ?>
 ]</script>

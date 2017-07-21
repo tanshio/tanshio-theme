@@ -120,4 +120,24 @@ function remove_dns_prefetch( $hints, $relation_type ) {
 add_filter( 'wp_resource_hints', 'remove_dns_prefetch', 10, 2 );
 
 
+function custom_oembed($code){
+  if(strpos($code, 'speakerdeck') !== false || strpos($code, 'speakerdeck') !== false){
+    $html = preg_replace('/ width="\d+"/', '', $code);
+    $html = preg_replace('/ height="\d+"/', '', $html);
+    $html = '<div class="m-embed"><div class="m-embed__main m-embed__main--speakerdeck">' . $code . '</div></div>';
 
+    return $html;
+  } elseif (strpos($code, 'slideshare') !== false) {
+
+    $html = preg_replace('/ width="\d+"/', '', $code);
+    $html = preg_replace('/ height="\d+"/', '', $html);
+    $html = preg_replace('/<ifr/', '<div class="m-embed"><div class="m-embed__main m-embed__main--slideshare"><ifr', $html);
+    $html = preg_replace('/<\/iframe>/', '</iframe></div></div>', $html);
+
+    return $html;
+  }
+  return $code;
+}
+
+add_filter('embed_handler_html', 'custom_oembed');
+add_filter('embed_oembed_html', 'custom_oembed');

@@ -181,7 +181,7 @@ pre {
   padding: 0;
   display: flex;
   margin-bottom: 3rem;
-  li {
+  & li {
     position: relative;
     flex: 1;
     text-align: center;
@@ -192,11 +192,36 @@ pre {
     &:first-of-type {
       margin-right: 1rem
     }
-
-
-
   }
-
 }
 
+.m-embed {
+  max-width: 500px;
+}
+
+.m-embed__main {
+  position: relative;
+  width: 100%;
+  height: 0;
+  & iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.m-embed__main--speakerdeck {
+  padding-bottom: 87.6%;
+  @supports(width: calc(0% - 0em)) {
+    padding-bottom: calc(74.5% + 27px + 36px);
+  }
+}
+
+
+.m-embed__main--slideshare {
+  padding-bottom: 81.6%;
+  @supports(width: calc(0% - 0em)) {
+    padding-bottom: calc(74.5% + 38px);
+  }
+}
 </style>
