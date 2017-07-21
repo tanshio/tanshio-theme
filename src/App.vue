@@ -217,7 +217,6 @@ pre {
   }
 }
 
-
 .m-embed__main--slideshare {
   padding-bottom: 81.6%;
   @supports(width: calc(0% - 0em)) {
